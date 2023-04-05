@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [TestSuite]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="Deepak.Components.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="Submit Order Test(failed)" verbose="0">
+    <classes>
+      <class name="Deepak.tests.ErrorValidation">
+        <methods>
+          <include name="tearDown"/>
+          <include name="errorValidation"/>
+          <include name="launchApplication"/>
+          <include name="productErrorValidation"/>
+        </methods>
+      </class> <!-- Deepak.tests.ErrorValidation -->
+    </classes>
+  </test> <!-- Submit Order Test(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->
