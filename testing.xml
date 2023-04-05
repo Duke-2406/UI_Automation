@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuite" verbose="1" >
+    <listeners>
+        <listener class-name="Deepak.Components.Listeners" />
+    </listeners>
+    <test thread-count="5" name="Submit Order Test" >
+        <classes>
+<!--            <class name="Deepak.tests.SelfIntroduction" />-->
+<!--            <class name="Deepak.tests.Day1" />-->
+<!--            <class name="Deepak.tests.SubmitOrderTest" />-->
+            <class name="Deepak.tests.ErrorValidation"/>
+        </classes>
+    </test>
+<!--    <test thread-count="5" name="Error Valiadation Test" >-->
+<!--        <classes>-->
+<!--            &lt;!&ndash;            <class name="Deepak.tests.SelfIntroduction" />&ndash;&gt;-->
+<!--            &lt;!&ndash;            <class name="Deepak.tests.Day1" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <class name="Deepak.tests.SubmitOrderTest" />&ndash;&gt;-->
+<!--            <class name="Deepak.tests.ErrorValidation"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <!--    <test name="CarLoan">-->
+    <!--        <classes>-->
+    <!--            <class name="TestNGTutorial" >-->
+    <!--                <methods>-->
+    <!--                    <exclude name="Mobile.*"></exclude>-->
+    <!--                </methods>-->
+    <!--            </class>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Homeload">-->
+    <!--        <classes>-->
+    <!--            <class name="Day1" />-->
+    <!--        </classes>-->
+    <!--    </test>-->
+</suite>
