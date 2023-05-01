@@ -43,9 +43,9 @@ public class PassengerDetails extends abstractComponent {
         waitForWebElementToClickable(radioBtn);
         radioBtn.click();
         waitForWebElementToClickable(firstName);
-        firstName.sendKeys("Deepak");
+        firstName.sendKeys("Test");
         waitForWebElementToClickable(lastName);
-        lastName.sendKeys("Sihare");
+        lastName.sendKeys("User");
         waitForWebElementToClickable(continueBtn);
         continueBtn.click();
         JavascriptExecutor js = (JavascriptExecutor) driver;

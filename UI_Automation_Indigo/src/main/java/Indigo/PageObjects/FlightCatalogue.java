@@ -25,8 +25,23 @@ public class FlightCatalogue extends abstractComponent {
     @FindBy(xpath=".//div[@class='fare-accordion']")
     List<WebElement> numbersOfFlight;
 
+    @FindBy(xpath="//p[contains(text(),'Departing flight')]/parent::div/parent::div/parent::div/following-sibling::div/div/div/div")
+    List<WebElement> departingFlights;
+
+    @FindBy(xpath = "//p[contains(text(),'Returning flight')]/parent::div/parent::div/parent::div/following-sibling::div/div/div/div")
+    List<WebElement> returningFlights;
+
     @FindBy(xpath = "(//h3[contains(text(),'Saver')])[1]/parent::div/parent::div/parent::div//span[contains(text(),'Book')]")
     WebElement bookButton;
+
+    @FindBy(xpath = "(//p[contains(text(),'Departing flight')]/parent::div/parent::div/parent::div/following-sibling::div/div/div/div)[1]//h3[contains(text(),'Saver')]/parent::div/parent::div/following-sibling::button//span[contains(text(),'Book')]")
+    WebElement departingFlightBookButton;
+
+    @FindBy(xpath = "(//p[contains(text(),'Returning flight')]/parent::div/parent::div/parent::div/following-sibling::div/div/div/div)[1]//h3[contains(text(),'Saver')]/parent::div/parent::div/following-sibling::button//span[contains(text(),'Book')]")
+    WebElement returningFlightBookButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Continue')]")
+    WebElement continueBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Skip & continue with saver fare')]")
     WebElement skipButton;
@@ -55,7 +70,47 @@ public class FlightCatalogue extends abstractComponent {
         }
         waitForWebElementToAppear(bookButton);
         bookButton.click();
+    }
 
+    public void seleceBothFlight(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        if(departingFlights.size()==0){
+            Assert.assertTrue(false);
+
+        }
+        else {
+            departingFlights.get(0).click();
+        }
+        waitForWebElementToAppear(departingFlightBookButton);
+        departingFlightBookButton.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        if(returningFlights.size()==0){
+            Assert.assertTrue(false);
+
+        }
+        else {
+            returningFlights.get(0).click();
+        }
+        waitForWebElementToAppear(returningFlightBookButton);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", returningFlightBookButton);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        continueBtn.click();
+    }
+
+    public void popupForPhoneNumberAndEmailID(){
         waitForWebElementToClickable(skipButton);
         try {
             Thread.sleep(10000);
@@ -69,8 +124,8 @@ public class FlightCatalogue extends abstractComponent {
             throw new RuntimeException(e);
         }
         waitForWebElementToClickable(mobileNumberInput);
-        mobileNumberInput.sendKeys("6264632149");
-        emailIDInput.sendKeys("deepaksihare891@gmail.com");
+        mobileNumberInput.sendKeys("1234567890");
+        emailIDInput.sendKeys("test@gmail.com");
         waitForWebElementToClickable(nextBtn);
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();", nextBtn);
         try {

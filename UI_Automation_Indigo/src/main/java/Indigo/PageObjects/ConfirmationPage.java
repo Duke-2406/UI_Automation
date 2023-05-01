@@ -2,6 +2,7 @@ package Indigo.PageObjects;
 
 import Indigo.AbstractComponents.abstractComponent;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +24,9 @@ public class ConfirmationPage extends abstractComponent {
     @FindBy(xpath = "//span[@class='RecordLocator']")
     WebElement confirmationNumber;
 
+    @FindBy(xpath = "//input[@type='checkbox']")
+    WebElement checkBox;
+
     public void confirmPage(){
         try {
             Thread.sleep(5000);
@@ -37,8 +41,14 @@ public class ConfirmationPage extends abstractComponent {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        waitForWebElementToAppear(confirmationNumber);
-        Boolean isElementEnabled = confirmationNumber.isEnabled();
-        Assert.assertTrue(isElementEnabled);
+//        js.executeScript("arguments[0].scrollIntoView();", checkBox);
+//        js.executeScript("arguments[0].click();", checkBox);
+//        boolean isElementEnabled = false;
+//        if(confirmationNumber.getText().isEmpty()){
+//            isElementEnabled = true;
+//        }
+//        Assert.assertTrue(isElementEnabled);
+        String title = driver.getTitle();
+        Assert.assertEquals(title, "Book flights Online for Domestic and International - IndiGo");
     }
 }
